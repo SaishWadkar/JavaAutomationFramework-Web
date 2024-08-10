@@ -10,10 +10,10 @@ public class LandingPage extends AbstractComponents {
 
     WebDriver driver;
 
-    public LandingPage(WebDriver driver){
+    public LandingPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     // 1. basic
@@ -21,21 +21,21 @@ public class LandingPage extends AbstractComponents {
 
     // 2. Page Factory
     @FindBy(id = "userEmail")
-    WebElement username;
+    WebElement usernameTextBox;
 
     @FindBy(id = "userPassword")
-    WebElement password;
+    WebElement passwordTextBox;
 
-    @FindBy(id = "Make 'click()' return 'void'")
-    WebElement login;
+    @FindBy(id = "login")
+    WebElement loginButton;
 
 
     // Action Methods
-    public void loginApplication(String username,String password){
+    public void loginApplication(String username, String password) {
 
-        this.username.sendKeys(username);
-        this.password.sendKeys(password);
-        login.click();
+        this.usernameTextBox.sendKeys(username);
+        this.passwordTextBox.sendKeys(password);
+        loginButton.click();
 
     }
 }

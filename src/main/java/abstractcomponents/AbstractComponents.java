@@ -20,6 +20,11 @@ public class AbstractComponents {
         wait.until(ExpectedConditions.visibilityOfElementLocated(findby));
     }
 
+    public void waitForElementToDisAppear(By findby) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(findby));
+    }
+
 
 //        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".ng-animating")));
 
