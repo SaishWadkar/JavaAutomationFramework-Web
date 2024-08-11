@@ -1,7 +1,6 @@
-package pageobjects;
+package saishwadkar.pageobjects;
 
-import abstractcomponents.AbstractComponents;
-import org.openqa.selenium.By;
+import saishwadkar.abstractcomponents.AbstractComponents;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
