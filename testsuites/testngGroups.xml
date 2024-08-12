@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="Suite">
+
+    <groups>
+        <run>
+            <include name="sanity"></include>
+        </run>
+    </groups>
+
+    <test thread-count="5" name="My 1st Test">
+        <classes>
+            <class name="saishwadkar.tests.FunctionalTest"/>
+        </classes>
+    </test> <!-- Test -->
+
+    <test thread-count="5" name="My 2nd Test">
+        <classes>
+            <class name="saishwadkar.tests.ValidationTest"/>
+        </classes>
+    </test> <!-- Test -->
+
+</suite> <!-- Suite -->
