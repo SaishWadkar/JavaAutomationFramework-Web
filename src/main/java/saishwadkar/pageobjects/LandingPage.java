@@ -32,10 +32,8 @@ public class LandingPage extends AbstractComponents {
 
     // Action Methods
     public void loginApplication(String username, String password) {
-
         this.usernameTextBox.sendKeys(username);
         this.passwordTextBox.sendKeys(password);
         loginButton.click();
-
     }
 }

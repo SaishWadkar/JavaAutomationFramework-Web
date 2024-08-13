@@ -1,0 +1,10 @@
+[
+  {
+    "username" : "qaautomation@gmail.com",
+    "password" : "Java@101"
+  },
+  {
+    "username" : "wrongemail@gmail.com",
+    "password" : "wrongpassword123"
+  }
+]
