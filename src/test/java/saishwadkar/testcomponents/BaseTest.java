@@ -1,10 +1,14 @@
 package saishwadkar.testcomponents;
 
+import com.google.common.io.Files;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
@@ -48,6 +52,21 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         return driver;
+    }
+
+//    public void WebDriver getDriver(){
+//        return this.driver;
+//    }
+
+    public String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
+        TakesScreenshot ts = (TakesScreenshot)this.driver;
+        File source = ts.getScreenshotAs(OutputType.FILE);
+        String filePath = System.getProperty("user.dir") + "//reports//"+testCaseName+".png";
+        File file = new File(filePath);
+        Files.copy(source,file);
+        // FileUtils.copyFile(source,file);
+        System.out.println(filePath);
+        return  filePath;
     }
 
 }
