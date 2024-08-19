@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite parallel="tests" name="Suite">
 
+    <listeners>
+        <listener class-name="saishwadkar.testcomponents.Listeners"></listener>
+    </listeners>
+
     <groups>
         <run>
             <include name="sanity"></include>

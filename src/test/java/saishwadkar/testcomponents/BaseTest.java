@@ -16,13 +16,13 @@ import java.util.Properties;
 
 public class BaseTest {
 
-    protected WebDriver driver;
+    protected static WebDriver driver;
 
     @BeforeMethod(alwaysRun = true)
-    public WebDriver launchApp() throws IOException {
+    public void setup() throws IOException {
         driver = initializeDriver();
         driver.get("https://rahulshettyacademy.com/client");
-        return driver;
+        //return driver;
     }
 
     @AfterMethod(alwaysRun = true)
@@ -35,16 +35,19 @@ public class BaseTest {
         // read from properties file
         Properties prop = new Properties();
         // System.getProperty("user.dir")
+
         FileInputStream fis = new FileInputStream("src/main/java/saishwadkar/resources/GlobalData.properties");
         prop.load(fis);
 
-        String browserName = prop.getProperty("browser");
+        String browserName = System.getProperty("browser") == null ? prop.getProperty("browser") : System.getProperty("browser");
+
+        // String browserName = prop.getProperty("browser");
 
         if(browserName.equalsIgnoreCase("chrome")){
             driver = new ChromeDriver();
         }
 
-        // default is chrome
+//         default is chrome
         else{
             driver = new ChromeDriver();
         }
@@ -59,7 +62,7 @@ public class BaseTest {
 //    }
 
     public String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
-        TakesScreenshot ts = (TakesScreenshot)this.driver;
+        TakesScreenshot ts = (TakesScreenshot)driver;
         File source = ts.getScreenshotAs(OutputType.FILE);
         String filePath = System.getProperty("user.dir") + "//reports//"+testCaseName+".png";
         File file = new File(filePath);

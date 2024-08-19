@@ -5,6 +5,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import saishwadkar.pageobjects.LandingPage;
 import saishwadkar.testcomponents.BaseTest;
+import saishwadkar.testcomponents.Retry;
 
 import java.util.HashMap;
 
@@ -41,7 +42,7 @@ public class ValidationTest extends BaseTest {
 //    }
 
     // 2, using hashmap
-    @Test(dataProvider = "getData",groups = {"login"})
+    @Test(dataProvider = "getData",groups = {"login"},retryAnalyzer = Retry.class)
     public void checkLogin(HashMap hashMap) throws InterruptedException {
 
         String username = (String) hashMap.get("username");

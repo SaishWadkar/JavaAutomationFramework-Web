@@ -19,10 +19,10 @@ public class FunctionalTest extends BaseTest {
     String country = "India";
     String orderID;
 
-    @Test
+    @Test(groups = {"regression"})
     public void addProductAndCheckoutTest() throws InterruptedException, IOException {
         // setup driver,browser,waits and open application
-        // WebDriver driver = launchApp();
+        // WebDriver driver = setup();
 
         // Page Objects : Landing Page : object creation can be gracefully handled by creating page object instances in chained methods only or inheritance
         LandingPage lp = new LandingPage(driver);

@@ -12,6 +12,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -43,11 +45,11 @@
       <artifactId>extentreports</artifactId>
       <version>5.1.2</version>
     </dependency>
-    <dependency>
-      <groupId>saishwadkar</groupId>
-      <artifactId>JavaAutomationFramework-Web</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>saishwadkar</groupId>-->
+<!--      <artifactId>JavaAutomationFramework-Web</artifactId>-->
+<!--      <version>1.0-SNAPSHOT</version>-->
+<!--    </dependency>-->
 
     <!-- https://mvnrepository.com/artifact/io.github.pityka/fileutils -->
     <dependency>
@@ -55,7 +57,87 @@
       <artifactId>fileutils_2.13</artifactId>
       <version>1.2.5</version>
     </dependency>
-
-
   </dependencies>
+
+  <profiles>
+    <profile>
+      <id>regression</id>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-surefire-plugin</artifactId>
+              <version>3.4.0</version>
+              <configuration>
+                <suiteXmlFiles>
+                  <suiteXmlFile>testsuites/testng.xml</suiteXmlFile>
+                </suiteXmlFiles>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+
+    <profile>
+      <id>sanity</id>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-surefire-plugin</artifactId>
+              <version>3.4.0</version>
+              <configuration>
+                <suiteXmlFiles>
+                  <suiteXmlFile>testsuites/testngGroups.xml</suiteXmlFile>
+                </suiteXmlFiles>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+
+    <profile>
+      <id>login</id>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-surefire-plugin</artifactId>
+              <version>3.4.0</version>
+              <configuration>
+                <suiteXmlFiles>
+                  <suiteXmlFile>testsuites/testngLogin.xml</suiteXmlFile>
+                </suiteXmlFiles>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+  </profiles>
+
+  <build>
+    <pluginManagement>
+       <plugins>
+           <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-surefire-plugin</artifactId>
+             <version>3.4.0</version>
+             <configuration>
+               <suiteXmlFiles>
+                 <suiteXmlFile>testsuites/testngLogin.xml</suiteXmlFile>
+               </suiteXmlFiles>
+             </configuration>
+           </plugin>
+       </plugins>
+    </pluginManagement>
+  </build>
+
+
+
 </project>
