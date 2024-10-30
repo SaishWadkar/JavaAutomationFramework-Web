@@ -30,6 +30,11 @@ public class BaseTest {
         driver.quit();
     }
 
+    public void launchApplication() throws InterruptedException {
+        driver.get("https://rahulshettyacademy.com/client");
+        Thread.sleep(2000);
+    }
+
     public WebDriver initializeDriver() throws IOException {
 
         // read from properties file
